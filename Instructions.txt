@@ -1,0 +1,98 @@
+==============================================================================
+LAB DESCRIPTION
+==============================================================================
+Last module, you developed CRUD operations for an Employee Management
+app using Node and Express (server-side). In this lab, you will be
+working on the client-side given a set of endpoints already defined for you
+to implementing similar functionality but this time on the client. You will be
+using Ajax to authenticate a user and upon success, load an employee record
+into a form that can be modified and saved back to the server. You will
+be using the POST and PATCH HTTP requests in this lab along with the base
+jQuery $.ajax() method to make the Ajax calls.
+
+Again, like last time, you should first test the endpoints (details below)
+using a API testing tool like reqbin BEFORE beginning the client-side code.
+This way, you will know what the endpoint path should be, what you should
+be POSTing and what you should be expecting from the endpoints.
+
+There are three parts for this lab and details for each part are in the
+/public/index.html file with specific directions. The first part will
+be a POST request to authenticate a user/password (details below). The
+second part is to populate the update form with the returned employee data
+and the third part is to update the employee with a PATCH request back to the server.
+
+Extra credit is available in Part 4
+
+==============================================================================
+INSTRUCTIONS
+==============================================================================
+1. Fork this project to your REPL.it account
+
+2. Study the endpoint definitions below and test them using an API
+   testing tool like req bin before beginning the client-side code.
+
+3. Follow the instructions included as comments in the /public/index.html
+
+
+==============================================================================
+ENDPOINT REFERENCE
+==============================================================================
+
+------------------------------------------------------
+1. AUTHENTICATE EMPLOYEE - POST /api/employees/login
+------------------------------------------------------
+POST Request Data (JSON):
+{
+  "email": "amiller@yahoo.com",
+  "password": "miller123"
+}
+------------------------------------------------------
+Expected Response (200) Data (JSON):
+{
+  "id": 1,
+  "name": "Andy Miller",
+  "email": "amiller@yahoo.com",
+  "password": "miller123",
+  "street": "13356 Eldridge Ave",
+  "city": "Sylmar",
+  "state": "CA",
+  "zip": "91342",
+  "phone": "818-333-7777"
+}
+------------------------------------------------------
+
+
+-------------------------------------------
+2. UPDATE EMPLOYEE - PATCH /api/employees/:id
+-------------------------------------------
+PATCH Request Data (JSON):
+{
+  "name": "Some Name",
+  "email": "email@server.com",
+  "street": "123 Main st.",
+  "city": "Some City",
+  "state": "CA",
+  "zip": "12345",
+  "phone": "111-222-3333"
+}
+---------------------------------------- 
+Expected Response (200) Data (JSON):
+The same updated employee record.
+----------------------------------------
+
+==============================================================================
+EMPLOYEE ACCOUNTS FOR TESTING
+==============================================================================
+|----------------------|------------|
+| Email                | Password   |
+|----------------------|------------|
+| amiller@yahoo.com    | miller123  |
+| jholiday@gmail.com   | holiday123 |
+| amay@outlook.com     | may123     |
+|----------------------|------------|
+
+
+==============================================================================
+HELP RESOURCES
+==============================================================================
+CRUD with Express - https://ilearn.laccd.edu/courses/202867/pages/module-5-and-6-crud-with-express
