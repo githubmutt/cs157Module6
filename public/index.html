@@ -68,6 +68,7 @@
           </div>
         </div>
         <button id="updateBtn" type="button" class="btn btn-success mb-2">Update</button>
+        <button id="deleteBtn" type="button" class="btn btn-warning mb-2">Delete</button>
         <button id="logoutBtn" type="button" class="btn btn-danger mb-2">Log Out</button>
         <div id="statusAlert" class="alert alert-secondary mt-3 mb-0 hidden"></div>
     </div>
@@ -226,17 +227,11 @@
 
           error: function(e){
             console.log("ERROR: " , e)
-
           }
 
           }) // $.ajax end
 
-
-
-
-
       }); // on click button
-
 
       /*
         PART 4 - EXTRA CREDIT (20 pts.)
@@ -250,8 +245,33 @@
       */
 
       // Part 4 code here (extra credit)
+      $("#deleteBtn").on("click", function() {
+         console.log("delete #" + currentEmployeeId)
+         
+         $.ajax({
+              type: 'DELETE',
+            //  contentType: "application/json",
+              url: "/api/delete/" + currentEmployeeId,
+              timeout: 600000,
+              //data: JSON.stringify( { "id": currentEmployeeId } ),
+              success: function(data){
+                   
+                   console.table( data )
 
 
+              },
+
+              error: function(e){
+              console.log("ERROR: delete " , e)
+
+            }
+
+}) // $.ajax end        
+
+
+
+
+      }) // on click button
 
 
 

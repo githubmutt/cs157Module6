@@ -6,6 +6,12 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
+
+
+
+
+
+
 app.post("/api/employees/login", (req, res) => {
   let emp = employeeDatabase.authenticateEmployee(req.body.email, req.body.password);
 
@@ -40,5 +46,31 @@ app.patch("/api/employees/:id", (req, res) => {
   function to delete the employee from the database.
 */
 
+app.all("/api/delete/:id", (req, res) => {
 
-app.listen(3000, () => console.log('server started'));
+
+  let id = parseInt( req.params.id, 10)
+
+   if(employeeDatabase.getEmployee(id) ){
+    let r = employeeDatabase.deleteEmployee(id)
+    if( !null){
+      return res.status(200).send("employee # " + id + " deleted " );         
+    }else{
+      return res.status(400).send("employee # " + id + " not deleted " );         
+
+    }
+
+   }else{
+
+    return res.status(404).send("ERROR: no employee # " + id);
+
+  }
+
+
+
+
+
+});
+
+
+app.listen(3000, () => console.log('port #3000: server started'));
